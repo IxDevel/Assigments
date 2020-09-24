@@ -2,7 +2,7 @@
 #include <malloc.h>
 #include <time.h>
 
-/*  Compute the average weight for a population of elephant seals
+/*  Generate 100 random numbers on a list
  *  Created at: 22-09-2020
  *  Last modification: 22-09-2020
  *  Made by: Isaac Da Pena

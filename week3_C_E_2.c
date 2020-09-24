@@ -44,10 +44,39 @@ void insertValueOnTop (struct list **Top, int value) {
     *Top = newTop;
 }
 
+void swap (int *a, int *b) {
+    int c = *a;
+    *a = *b;
+    *b = c;
+}
+
+void bubbleSort(struct list *l) {
+    if(l) {
+        struct list *end = NULL;
+        struct list *aux;
+        int changes;
+        while(1) {
+            changes = 0;
+            for(aux = l; aux->next != end; aux = aux->next) {
+                if(aux->value > aux->next->value) {
+                    swap(&(aux->value), &(aux->next->value));
+                    changes++;
+                }
+            }
+            end = aux;
+            if(end == l->next || !changes)
+                break;
+        }
+    }
+}
+
+
 int main(void) {
     struct list *randList = NULL;
     srand((unsigned) time(NULL));
     for (int i  = 0; i < 100; i++)
         insertValueOnTop(&randList, rand() % 100);
+    bubbleSort(randList);
     printList(randList);
 }
+

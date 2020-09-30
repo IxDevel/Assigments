@@ -17,6 +17,7 @@
  *  2
  *  1
  *  4
+ *  5
  *  The file name must be input.txt
  */
 void loadData (int **dataArray, int *dataSize, const char *filePath) {

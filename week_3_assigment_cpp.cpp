@@ -109,7 +109,6 @@ void ShortPath::getShortPath(Graph &g, int initialNode) const {
         trace[row].push(initialNode);
     }
 
-
     distance[initialNode] = 0;
     visited[initialNode] = true;
 
@@ -122,11 +121,7 @@ void ShortPath::getShortPath(Graph &g, int initialNode) const {
                     candidate = ver;
                     min = distance[ver];
                 }
-
-            if (candidate == -1) {
-                cout << "Error" << endl;
-                return;
-            }
+            
             visited[candidate] = true;
             for (int ver = 0, already = 0; ver < matrix.size(); ver++)
                 if (!visited[ver] && matrix[candidate][ver] != 0 && distance[ver] > distance[candidate] + matrix[candidate][ver]) {
@@ -164,7 +159,7 @@ void ShortPath::getShortPath(Graph &g, int initialNode) const {
 
 int main() {
     // Create a new Graph object
-    auto &g = *(new Graph(6));
+    auto &g = *(new Graph(50));
     // Create a new short path finder
     auto &finder = *(new ShortPath());
     // Fill the Graph
@@ -172,9 +167,6 @@ int main() {
     // Print it
     cout << g << endl;
     // Find the shortest paths from and to all nodes
-    for (int i = 0; i < g.getMatrixSize(); i++) {
-        cout << endl << "From node " << i << ": " << endl;
-        finder.getShortPath(g, i);
-    }
+    finder.getShortPath(g, i);
     return 0;
 }
